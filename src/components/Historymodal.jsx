@@ -9,13 +9,21 @@ const HistoryModal = ({ machineId, onClose }) => {
 
   useEffect(() => {
     const fetchHistory = async () => {
-      try {
-        const [osRes, avRes, diskRes, sleepRes] = await Promise.all([
-          axios.get(`http://localhost:5000/api/history/os?machineId=${machineId}`),
-          axios.get(`http://localhost:5000/api/history/antivirus?machineId=${machineId}`),
-          axios.get(`http://localhost:5000/api/history/disk?machineId=${machineId}`),
-          axios.get(`http://localhost:5000/api/history/sleep?machineId=${machineId}`),
-        ]);
+try {
+  const baseURL = "https://system-utility-backend.onrender.com/api/history";
+
+  const [osRes, avRes, diskRes, sleepRes] = await Promise.all([
+    axios.get(`${baseURL}/os?machineId=${machineId}`),
+    axios.get(`${baseURL}/antivirus?machineId=${machineId}`),
+    axios.get(`${baseURL}/disk?machineId=${machineId}`),
+    axios.get(`${baseURL}/sleep?machineId=${machineId}`),
+  ]);
+
+  // Now you can use osRes.data, avRes.data, diskRes.data, sleepRes.data
+} catch (error) {
+  console.error("Error fetching history:", error);
+}
+
         setHistory({
           os: osRes.data,
           antivirus: avRes.data,
