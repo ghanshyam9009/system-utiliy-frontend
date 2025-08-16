@@ -177,7 +177,7 @@ import IssueBadge from "./IssueBadge";
 import HistoryModal from "./Historymodal";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000"); // Connect to server
+const socket = io("https://system-utility-backend.onrender.com/"); // Connect to server
 
 const MachineTable = () => {
   const [machines, setMachines] = useState([]);
