@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_BASE = "http://localhost:5000/api";
-const API_BASE = "https://system-utiliy-frontend.onrender.com/";
+const API_BASE = "https://system-utility-backend.onrender.com/";
 
 export const fetchAllMachines = async () => {
   const res = await axios.get(`${API_BASE}/all-machines`);
